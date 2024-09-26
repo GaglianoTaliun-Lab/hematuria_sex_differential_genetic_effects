@@ -30,6 +30,9 @@ regenie --step 2 \
     --bsize 200 \
     --minMAC 20 \
     --minINFO 0.4 \
+    --af-cc \
+    --firth \
+    --firth-se \
     --phenoCol f.22001.0.0 --covarCol f.34.0.0 --covarCol f.22009.0.{1:10} \
     --pred ${project_dir}/results_regenie/step1_ukb_sex_X593_all_pred.list \
     --threads 12 \
@@ -48,6 +51,9 @@ regenie --step 2 \
     --bsize 200 \
     --minMAC 20 \
     --minINFO 0.4 \
+    --af-cc \
+    --firth \
+    --firth-se \
     --phenoCol f.22001.0.0 --covarCol f.34.0.0 --covarCol f.22009.0.{1:10} \
     --pred ${project_dir}/results_regenie/step1_ukb_sex_X593_all_pred.list \
     --threads 12 \
