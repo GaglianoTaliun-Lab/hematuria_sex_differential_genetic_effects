@@ -54,3 +54,9 @@ Code used in this paper is available within the /scripts directory, and below ar
 **4. plink:** plink_LD_UKB_TOPMed_RAP.sh; plink_regional_ld.sh
 
 **5. plots:** miami_eGFR_bysex.R
+
+## _**Sex-specific TWAS of hematuria**_
+
+**1. metaxcan:** sql_predixcan_weights.R; predixcan.sh; map_genes_predixcan.R
+   
+**2. plots:** miami_TWAS.R
