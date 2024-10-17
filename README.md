@@ -3,13 +3,16 @@
 **Summary:** We performed sex-specific genome-wide association analyses in the white British subset of the UK Biobank, and we report replication results in Million Veteran Program and Geisinger MyCode. We assessed sex-differing genetic effects for hematuria using three computational approaches: 1) sex by genotype interaction analysis of lead variants, 2) case-only genome-wide interaction (COGWI) analysis, and 3) genome-wide sexually dimorphic effects. Finally, we explored the pleiotropic COL4A2 region across cardiovascular and kidney traits through Bayesian colocalization analysis.
 
 ----------------------------------------------------------------------------
-Code used in this paper is available within the /scripts directory, and below are the scripts used on each analysis, following the manuscript subheadings.
+
+Sex-stratified GWAS summary statistics of hematuria (HRC imputed) are available here: **GWAS Catalog?**
+
+Code used in this paper is available in this repository within the /scripts directory, and below are the scripts used on each analysis, following the manuscript subheadings.
 
 ----------------------------------------------------------------------------
 
 ## **_Sex-specific GWAS of hematuria_**
 
-**1. saige:** format_sex_hematuria_GWAS.R
+**1. saige:** format_sex_hematuria_GWAS.R ____
 
 **2. ldsc:** tsv_mungesumstats.R; munge_sumstats_ldsc.sh; ldsc.sh; corr_matrix.R
 
@@ -19,7 +22,7 @@ Code used in this paper is available within the /scripts directory, and below ar
 
 **5. Rmisc:** analyse_regenie_conditional_results.R; get_conditional_snps_regenie_TOPMed.R; comparison_HRC_TOPMed.R
 
-**6.** HLA association
+**6.** HLA association _____
 
 **7. plots:** partitioned_h2.R; miami_hematuria_bysex.R
 
