@@ -4,7 +4,7 @@
 
 ----------------------------------------------------------------------------
 
-Sex-stratified GWAS summary statistics of hematuria (HRC imputed) are available here: **GWAS Catalog?**
+Sex-stratified GWAS summary statistics of hematuria (HRC imputed) are available here: **insert Locus Zoom link**
 
 Code used in this paper is available in this repository within the /scripts directory, and below are the scripts used on each analysis, following the manuscript subheadings.
 
@@ -28,7 +28,7 @@ Code used in this paper is available in this repository within the /scripts dire
 
 ## **_Hematuria prevalence by sex_**
 
-**1. Rmisc:** female_male_age_deciles_prev.R; age_stratification_X593_phenotype.R; analyse_menopause_status_associations.R
+**1. Rmisc:** female_male_age_deciles_prev.R; age_stratification_X593_phenotype.R; menopause_stratification_X593.R; analyse_menopause_status_associations.R
 
 **2. regenie:** regenie_step1_X593_groups.sh; regenie_step2_age_groups_RAP.sh
 
