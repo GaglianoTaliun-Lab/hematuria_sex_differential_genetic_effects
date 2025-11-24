@@ -27,7 +27,3 @@ ggplot(h2, aes(x = as.factor(locus), y = h2, color = sex)) +
         axis.title.x = element_text(face="bold", size=15), axis.title.y = element_text(face="bold", size=15)) +
   theme(legend.title = element_text(size=16, face="bold"), legend.text = element_text(size=14))
 ggsave(here(project_dir, "bolt-lmm", "imputed_pruned_1Mb", "partitioned_h2_X593.png"))
-
-
-
-
