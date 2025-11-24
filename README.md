@@ -24,19 +24,13 @@ Code used in this paper is available in this repository within the /scripts dire
 
 **6.** HLA association _____
 
-**7. plots:** partitioned_h2.R; miami_hematuria_bysex.R
+**7. plots:** partitioned_h2.R; miami_hematuria_bysex.R; locuszoomr_plots_chr13.R; locuszoomr_plots_chr19.R
 
 ## **_Hematuria prevalence by sex_**
 
-**1. Rmisc:** female_male_age_deciles_prev.R; age_stratification_X593_phenotype.R; menopause_stratification_X593.R; analyse_menopause_status_associations.R
+**1. Rmisc:** female_male_age_deciles_prev.R; age_stratification_X593_phenotype.R; menopause_stratification_X593.R; analyse_menopause_status_associations.R; hematuria_ICDcodes_timestamps.R; hematuria_ICScodes.ipynb
 
 **2. regenie:** regenie_step1_X593_groups.sh; regenie_step2_age_groups_RAP.sh
-
-## _**Genome-wide gene burden analysis of LoF variants in UKB WES data**_
-
-**1. regenie:** regenie_step2_sexstratified_genome_wide_burden.sh; regenie_step2_sexstratified_genome_wide_burden_lovo.sh
-
-**2. plots:** miami_plot_burden.R
 
 ## _**Assessment of sex-differential effects in hematuria**_
 
@@ -44,22 +38,38 @@ Code used in this paper is available in this repository within the /scripts dire
 
 **2. plots:** manhattan_plot_SDE.R; manhaattan_plot_sex_X593caseonly.R
 
-**3. regenie:** regenie_step2_interaction.sh; regenie_step1_sex_C593_caseonly.sh; regenie_step1_check_assumption_COGWI.sh; regenie_step2_sex_X593_caseonly.sh; regenie_step2_check_assumption_COGWI.sh; regenie_step2_sex_X593_caseonly_chrX.sh
+**3. regenie:** regenie_step2_interaction_RAP.sh; regenie_step1_sex_C593_caseonly.sh; regenie_step1_check_assumption_COGWI.sh; regenie_step2_sex_X593_caseonly.sh; regenie_step2_check_assumption_COGWI.sh; regenie_step2_sex_X593_caseonly_chrX.sh; regenie_step2_X593_WGS_RAP.sh
+
+## _**Assocation of sex hormone levels with hematuria in the UKB**_
+
+**1. Rmisc:** estradiol_table_updated.R; estradiol_analysis_for_hematuria.R; testosterone_associations.R
 
 ## _**Colocalization with cardiovascular and kidney related traits in the COL4A2 region**_
 
 **1. regenie:** regenie_step1_egfr.sh; regenie_step2_egfr.sh; regenie_step2_egfr_chrX.sh
 
-**2. hyprcoloc:** format_datasets.R; format_datasets_BPtraits.R; format_datasets_egfr_coloc.R; hyprcoloc.R
+**2. hyprcoloc:** format_datasets.R; format_datasets_BPtraits.R; format_datasets.R; hyprcoloc.R; sharepro.sh
 
-**3. Rmisc:** egfr_phenotype.R; post_regenie_egfr.R; regional_plots_chr13_UKB_LD.R
+**3. Rmisc:** egfr_phenotype.R; post_regenie_egfr.R
 
 **4. plink:** plink_LD_UKB_TOPMed_RAP.sh; plink_regional_ld.sh
 
-**5. plots:** miami_eGFR_bysex.R
+**5. plots:** miami_eGFR_bysex.R; locuszoomr_plots_coloc_traits_females.R; locuszoomr_plots_coloc_traits_males.R
+
+## _**Genome-wide gene burden analysis of LoF variants in UKB WES data**_
+
+**1. regenie:** regenie_step2_sexstratified_genome_wide_burden.sh; regenie_step2_sexstratified_genome_wide_burden_lovo.sh
+
+**2. plots:** miami_plot_burden.R
 
 ## _**Sex-specific TWAS of hematuria**_
 
-**1. metaxcan:** sql_predixcan_weights.R; predixcan.sh; map_genes_predixcan.R
+**1. TWAS:** otters_stage1.sh; otters_stage2.sh; otters_acat.R; plink_otters_input.sh; coloc_eQTLs.R
    
-**2. plots:** miami_TWAS.R
+**2. plots:** otters_miami_plots.R
+
+## _**Sex-specific PWAS of hematuria**_
+
+**1. PWAS:** bliss.sh
+   
+**2. plots:** miami_bliss_bysex.R
