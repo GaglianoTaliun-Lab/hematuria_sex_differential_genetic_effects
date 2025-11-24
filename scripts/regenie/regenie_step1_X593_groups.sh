@@ -35,4 +35,3 @@ regenie \
   --strict \
   --lowmem-prefix tmp_rg_females_G${group} \
   --out ${project_dir}/results_regenie/step1_ukb_X593_menopause_status_females_G${group}
-
