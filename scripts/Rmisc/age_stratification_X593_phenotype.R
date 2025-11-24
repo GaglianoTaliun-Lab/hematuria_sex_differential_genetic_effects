@@ -40,23 +40,15 @@ hem_all <- inner_join(hem, wb, by = c("FID", "IID")) %>%
   left_join(., age, by = "FID") %>%
   left_join(., gender, by = "FID")
 
-# ----------- Group by ages (used for COGWI stratified analysis - testing only two significant signals in chr 16 and X):
+# ----------- Group by ages (used for COGWI male stratified analysis - testing only two significant signals in chr 16 and X):
 
 # males below 50
 wb_males_G1 <- inner_join(wb_males, age, by = "FID") %>%
   filter(., age < 50) %>%
   dplyr::select(FID, IID)
+
 # males equal or above 50
 wb_males_G2 <- inner_join(wb_males, age, by = "FID") %>%
-  filter(., age >= 50) %>%
-  dplyr::select(FID, IID)
-
-# females below 50
-wb_females_G1 <- inner_join(wb_females, age, by = "FID") %>%
-  filter(., age < 50) %>%
-  dplyr::select(FID, IID)
-# females equal or above 50
-wb_females_G2 <- inner_join(wb_females, age, by = "FID") %>%
   filter(., age >= 50) %>%
   dplyr::select(FID, IID)
 
@@ -75,10 +67,8 @@ wb_sexcombined_G2 <- hem_all %>%
 # write files for REGENIE --keep:
 # write.table(wb_males_G1, here(project_dir, "regenie", "data_for_regenie", "ukb_WB_male_ageG1_ids.txt"), sep = "\t", row.names = F, quote = F)
 # write.table(wb_males_G2, here(project_dir, "regenie", "data_for_regenie", "ukb_WB_male_ageG2_ids.txt"), sep = "\t", row.names = F, quote = F)
-# write.table(wb_females_G1, here(project_dir, "regenie", "data_for_regenie", "ukb_WB_female_ageG1_ids.txt"), sep = "\t", row.names = F, quote = F)
-# write.table(wb_females_G2, here(project_dir, "regenie", "data_for_regenie", "ukb_WB_female_ageG2_ids.txt"), sep = "\t", row.names = F, quote = F)
-write.table(wb_sexcombined_G1, here(project_dir, "regenie", "data_for_regenie", "ukb_WB_sexcombined_cases_ageG1_ids.txt"), sep = "\t", row.names = F, quote = F)
-write.table(wb_sexcombined_G2, here(project_dir, "regenie", "data_for_regenie", "ukb_WB_sexcombined_cases_ageG2_ids.txt"), sep = "\t", row.names = F, quote = F)
+# write.table(wb_sexcombined_G1, here(project_dir, "regenie", "data_for_regenie", "ukb_WB_sexcombined_cases_ageG1_ids.txt"), sep = "\t", row.names = F, quote = F)
+# write.table(wb_sexcombined_G2, here(project_dir, "regenie", "data_for_regenie", "ukb_WB_sexcombined_cases_ageG2_ids.txt"), sep = "\t", row.names = F, quote = F)
 
 
 # --------- Plots
@@ -95,7 +85,7 @@ ggplot(hem_all_plot, aes(x = age, fill = as.factor(sex))) +
   theme(legend.title = element_blank(),
         #legend.position = "none",
         plot.title = element_text(hjust =0.5),
-        axis.line.x = element_line(size = 0.6),
+        axis.line.x = element_line(linewidth = 0.6),
         axis.ticks.length=unit(0.3,"cm"),
         axis.text.y  = element_blank(),
         axis.line.y = element_blank(),
@@ -107,9 +97,12 @@ ggplot(hem_all_plot, aes(x = age, fill = as.factor(sex))) +
         axis.title.x = element_text(face="bold", size=15), axis.title.y = element_text(face="bold", size=15)) +
   theme(legend.title = element_text(size=16, face="bold"), legend.text = element_text(size=14)) +
   geom_vline(aes(xintercept=50),
-             color="blue", linetype="dashed", size=1) +
-  guides(fill=guide_legend(title = "Group"))
-ggsave(here(project_dir, "age_sex_analyses", "histogram_wB_age_bysex_vline50.png"), width=10, height=8)
+             color="red", linetype="dashed", linewidth=1) +
+  scale_fill_manual(values = c("female" = "#DDAA33", "male" = "#BB5566"),
+                     name = "Sex",
+                     labels = c("female" = "Females", "male" = "Males"))
+
+ggsave(here(project_dir, "age_sex_analyses", "histogram_wB_age_bysex_vline50.png"), width=10, height=8, dpi = 300)
 
 
 hem_f_wb <- hem_all %>%
