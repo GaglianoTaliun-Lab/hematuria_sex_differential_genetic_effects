@@ -11,7 +11,7 @@ Code used in this paper is available in this repository within the /scripts dire
 
 ----------------------------------------------------------------------------
 
-## **_Sex-specific GWAS of hematuria_**
+## _**Sex-specific GWAS of hematuria**_
 
 **1. saige:** format_sex_hematuria_GWAS.R ____
 
@@ -27,7 +27,7 @@ Code used in this paper is available in this repository within the /scripts dire
 
 **7. plots:** partitioned_h2.R; miami_hematuria_bysex.R; locuszoomr_plots_chr13.R; locuszoomr_plots_chr19.R
 
-## **_Hematuria prevalence by sex_**
+## _**Hematuria prevalence by sex**_
 
 **1. Rmisc:** female_male_age_deciles_prev.R; age_stratification_X593_phenotype.R; menopause_stratification_X593.R; analyse_menopause_status_associations.R; hematuria_ICDcodes_timestamps.R; hematuria_ICScodes.ipynb
 
@@ -41,7 +41,7 @@ Code used in this paper is available in this repository within the /scripts dire
 
 **3. regenie:** regenie_step2_interaction_RAP.sh; regenie_step1_sex_C593_caseonly.sh; regenie_step1_check_assumption_COGWI.sh; regenie_step2_sex_X593_caseonly.sh; regenie_step2_check_assumption_COGWI.sh; regenie_step2_sex_X593_caseonly_chrX.sh; regenie_step2_X593_WGS_RAP.sh
 
-## _**Assocation of sex hormone levels with hematuria in the UKB**_
+## _**Association of sex hormone levels with hematuria in the UKB**_
 
 **1. Rmisc:** estradiol_table_updated.R; estradiol_analysis_for_hematuria.R; testosterone_associations.R
 
