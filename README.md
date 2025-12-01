@@ -5,7 +5,7 @@ Sex differences play a significant role in kidney disease. We systematically ass
 
 ----------------------------------------------------------------------------
 
-Sex-stratified GWAS summary statistics of hematuria (HRC imputed) are available here: [Male-specific](https://my.locuszoom.org/gwas/494413/?token=39c44f7deef9427db2624e74d5d869fd) and [Female-specific](https://my.locuszoom.org/gwas/496796/?token=c508ca8a88d4412ba282cc466cab5dac)
+Sex-stratified GWAS summary statistics of hematuria (HRC imputed) in the white British subset of the UKB are available here: [Male-specific](https://my.locuszoom.org/gwas/494413/?token=39c44f7deef9427db2624e74d5d869fd) and [Female-specific](https://my.locuszoom.org/gwas/496796/?token=c508ca8a88d4412ba282cc466cab5dac)
 
 Code used in this paper is available in this repository within the /scripts directory, and below are the scripts used on each analysis, following the manuscript subheadings.
 
