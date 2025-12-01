@@ -1,7 +1,7 @@
 # **Title:** Investigation of genome-wide sex-differential effects in hematuria
 
 **Summary:** 
-Sex differences play a significant role in kidney disease. We systematically assessed potential sex differential genetic effects for hematuria in a large population-based biobank followed by replication in independent cohorts (Million Veteran Program and Geisinger MyCode).  We identified significant sex interaction effects of genetic variants in two autosomal type IV collagen genes (COL4A3 and COL4A2). Our results indicate that the association between autosomal genetic variation and hematuria can differ by sex. Finally, we explored the pleiotropic COL4A2 region across cardiovascular and kidney traits through Bayesian colocalization analysis. Ultimately, these findings should be considered in the development of personalized therapies tailored by sex. 
+Sex differences play a significant role in kidney disease. We systematically assessed potential sex differential genetic effects for hematuria in a large population-based biobank followed by replication in independent cohorts (Million Veteran Program and Geisinger MyCode).  We identified significant sex interaction effects of genetic variants in two autosomal type IV collagen genes (_COL4A3_ and _COL4A2_). Our results indicate that the association between autosomal genetic variation and hematuria can differ by sex. Finally, we explored the pleiotropic _COL4A2_ region across cardiovascular and kidney traits through Bayesian colocalization analysis. Ultimately, these findings should be considered in the development of personalized therapies tailored by sex. 
 
 ----------------------------------------------------------------------------
 
