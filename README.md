@@ -1,10 +1,11 @@
 # **Title:** Investigation of genome-wide sex-differential effects in hematuria
 
-**Summary:** We performed sex-specific genome-wide association analyses in the white British subset of the UK Biobank, and we report replication results in Million Veteran Program and Geisinger MyCode. We assessed sex-differing genetic effects for hematuria using three computational approaches: 1) sex by genotype interaction analysis of lead variants, 2) case-only genome-wide interaction (COGWI) analysis, and 3) genome-wide sexually dimorphic effects. Finally, we explored the pleiotropic COL4A2 region across cardiovascular and kidney traits through Bayesian colocalization analysis.
+**Summary:** 
+Sex differences play a significant role in kidney disease. We systematically assessed potential sex differential genetic effects for hematuria in a large population-based biobank followed by replication in independent cohorts (Million Veteran Program and Geisinger MyCode).  We identified significant sex interaction effects of genetic variants in two autosomal type IV collagen genes (COL4A3 and COL4A2). Our results indicate that the association between autosomal genetic variation and hematuria can differ by sex. Finally, we explored the pleiotropic COL4A2 region across cardiovascular and kidney traits through Bayesian colocalization analysis. Ultimately, these findings should be considered in the development of personalized therapies tailored by sex. 
 
 ----------------------------------------------------------------------------
 
-Sex-stratified GWAS summary statistics of hematuria (HRC imputed) are available here: **insert Locus Zoom link**
+Sex-stratified GWAS summary statistics of hematuria (HRC imputed) are available here: [Male-specific](https://my.locuszoom.org/gwas/494413/?token=39c44f7deef9427db2624e74d5d869fd) and [Female-specific](https://my.locuszoom.org/gwas/496796/?token=c508ca8a88d4412ba282cc466cab5dac)
 
 Code used in this paper is available in this repository within the /scripts directory, and below are the scripts used on each analysis, following the manuscript subheadings.
 
