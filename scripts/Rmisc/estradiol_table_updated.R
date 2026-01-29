@@ -53,7 +53,7 @@ females_wb <- read.table(here(project_dir, "regenie", "data_for_regenie", "ukb_W
   dplyr::rename(FID = V1, IID = V2)
 
 # ukb withdraws
-withdraws <- read.table(here(project_dir, "estradiol", "w66222_20241217.csv"), sep = "\t", header = FALSE)
+withdraws <- read.table(here(project_dir, "w66222_20250818.csv"), sep = "\t", header = FALSE)
 
 # estradiol levels
 estradiol <- read.table(here(project_dir, "estradiol", "f30800.txt"), sep = "\t", header = TRUE) %>%
@@ -82,6 +82,33 @@ menopause_status <- read.table(here(project_dir, "estradiol", "f2724_all_instanc
 # age at hematuria diagnosis
 age_diagnosis <- read.table(here(project_dir, "age_at_diagnosis_cases_X593_updated.txt"), sep = "\t", header = T) %>%
   dplyr::select(FID = IID, age_at_X593_diagnosis)
+
+# date of attending assessment centre
+assess_date <- read.table(here(project_dir, "f.53.0.0"), sep = "\t", header = T) %>%
+  dplyr::filter(f.eid %in% females_wb$FID) %>%
+  dplyr::rename(FID = f.eid, assess_date = f.53.0.0) %>%
+  mutate(assess_date = as.Date(assess_date, '%Y-%m-%d'), assess_year = as.numeric(format(assess_date,'%Y'))) %>%
+  dplyr::select(-assess_date)
+
+# oral contraceptive ages
+OC <- read.table(here(project_dir, "estradiol", "oral_contraceptives_age.txt"), sep = "\t", header = T) %>%
+  dplyr::filter(f.eid %in% females_wb$FID) %>%
+  dplyr::rename(FID = f.eid) %>%
+  mutate(OC_status = case_when(
+    is.na(f.2794.0.0) & is.na(f.2804.0.0) ~ 0,
+    f.2794.0.0 %in% c(-1, -3) | f.2804.0.0 %in% c(-1, -3) ~ NA,
+    !(f.2794.0.0 %in% c(-1, -3)) & !(f.2804.0.0 %in% c(-1, -3)) ~ 1
+  ))
+
+# hormone replacement therapy
+HRT <- read.table(here(project_dir, "estradiol", "hormone_replacement_age.txt"), sep = "\t", header = T) %>%
+  dplyr::filter(f.eid %in% females_wb$FID) %>%
+  dplyr::rename(FID = f.eid) %>%
+  mutate(HRT_status = case_when(
+    is.na(f.3536.0.0) & is.na(f.3546.0.0) ~ 0,
+    f.3536.0.0 %in% c(-1, -3) | f.3546.0.0 %in% c(-1, -3) ~ NA,
+    !(f.3536.0.0 %in% c(-1, -3)) & !(f.3546.0.0 %in% c(-1, -3)) ~ 1
+  ))
 
 # eGFR-creatinine based (2009 equation) collected at baseline
 egfr_all <- read.table(here(project_dir, "egfr", "egfr_withcovariates_for_REGENIE_updated.txt"), sep = "\t", header = TRUE) 
@@ -247,8 +274,12 @@ all <- filter(hematuria_table, IID %in% females_wb$IID) %>%
     TRUE ~ f.2724.final
   )) %>%
   left_join(., age_diagnosis, by = "FID") %>%
-    dplyr::rename(age_at_X593 = age_at_X593_diagnosis)
-
+    dplyr::rename(age_at_X593 = age_at_X593_diagnosis) %>%
+  # join with oral contraceptives and hormone replacement dfs:
+  left_join(., OC, by = "FID") %>%
+  left_join(., HRT, by = "FID") %>%
+  left_join(., assess_date, by = "FID")
+  
 # fix menopause status based on the age at estradiol assessment (X3581.latest)
 # in case the assessment was done before menopause, but participant has since reported age at menopause
 all <- all %>%
@@ -269,6 +300,30 @@ all <- all %>%
   )
   )
 
+# fix OC and HRT status based on the age at estradiol measurement
+  # 1. if end age of OC or HRT = -11, then set the end age to age when attended first assessment (assess_year - YOB (f.34.0.0)), otherwise leave as it is:
+  all <- all %>%
+    mutate(f.2804.0.0 = case_when(
+    f.2804.0.0 == -11 ~ assess_year - f.34.0.0,
+    TRUE ~ f.2804.0.0
+  ),
+    f.3546.0.0 = case_when(
+      f.3546.0.0 == -11 ~ assess_year - f.34.0.0,
+      TRUE ~ f.3546.0.0)) %>%
+  # 2. if age at estradiol measurement (age_at_30800) is within start and end date of OC or HRT, then set OC_status or HRT_status to 1, otherwise set to 0:
+    mutate(OC_status = case_when(
+      is.na(f.2794.0.0) & is.na(f.2804.0.0) ~ 0, # case where both ages are NA, then assuming they were not under OC (0)
+      f.2794.0.0 %in% c(-1, -3) | f.2804.0.0 %in% c(-1, -3) ~ NA, # case where there is missing data for either reported age, then cannot assess OC status (NA)
+      f.2794.0.0 <= age_at_30800 & f.2804.0.0 >= age_at_30800 ~ 1, # case where date of estradiol measure overlapped with OC treatment (1)
+      f.2794.0.0 > age_at_30800 | f.2804.0.0 < age_at_30800 ~ 0 # case where date of estradiol measure does not overlap with OC treatment (0)
+    ),
+    HRT_status = case_when(
+      is.na(f.3536.0.0) & is.na(f.3546.0.0) ~ 0, # case where both ages are NA, then assuming they were not under HRT (0)
+      f.3536.0.0 %in% c(-1, -3) | f.3546.0.0 %in% c(-1, -3) ~ NA, # case where there is missing data for either reported age, then cannot assess HRT status (NA)
+      f.3536.0.0 <= age_at_30800 & f.3546.0.0 >= age_at_30800 ~ 1, # case where date of estradiol measure overlapped with HRT treatment (1)
+      f.3536.0.0 > age_at_30800 | f.3546.0.0 < age_at_30800 ~ 0 # case where date of estradiol measure does not overlap with HRT treatment (0)
+      ))
+  
 # add eGFR and uACR measurements:
 all <- all %>%
   left_join(., egfr, by = "FID") %>%
