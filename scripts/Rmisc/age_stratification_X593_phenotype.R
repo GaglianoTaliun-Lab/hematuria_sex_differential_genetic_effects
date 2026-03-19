@@ -40,6 +40,19 @@ hem_all <- inner_join(hem, wb, by = c("FID", "IID")) %>%
   left_join(., age, by = "FID") %>%
   left_join(., gender, by = "FID")
 
+# females
+hem_f <- hem_all %>%
+  dplyr::filter(., f.22001.0.0 == 0)
+# males
+hem_m <- hem_all %>%
+  dplyr::filter(., f.22001.0.0 == 1)
+
+# get mean and SE for age by sex:
+mean(hem_f$age)
+sd(hem_f$age)
+mean(hem_m$age)
+sd(hem_m$age)
+
 # ----------- Group by ages (used for COGWI male stratified analysis - testing only two significant signals in chr 16 and X):
 
 # males below 50
